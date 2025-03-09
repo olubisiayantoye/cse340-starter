@@ -1,30 +1,24 @@
-/* General Styles */
+/* General Styles ###################################*/
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-image: url("/images/site/checkerboard.jpg"); /* Update with your actual image path */
-  background-size: cover;  /* Ensures the image covers the whole page */
+  /* background-size: cover;  Ensures the image covers the whole page */
   background-position: center; /* Centers the background */
   background-attachment: fixed; /* Keeps the background fixed while scrolling */
-  background-repeat: no-repeat; /* Prevents tiling */
+  background-repeat:repeat; /* Prevents tiling */
   color: #0f0e0e; /*Ensures readability on darker backgrounds */
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    background-image: url("/images/site/small_check.jpg"); /* Mobile-friendly background */
-    background-size: cover;
-    background-position: center;
-  }
-}
+
 
 
 main {
   max-width: 1200px; /* Ensures content doesn't stretch too wide */
-  margin: 20px auto; /* Centers the main section */
-  padding: 20px;
+  margin: 40px auto; /* Centers the main section */
+  padding: 40px;
   background: rgba(255, 255, 255, 0.968); /* Light background for contrast */
   border: 4px solid #007BFF; /* Blue border */
   border-radius: 10px; /* Rounded corners */
@@ -86,22 +80,31 @@ nav ul li {
   border-radius: 5px;
 }
 
-.upgrades-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  padding: 20px;
+
+
+
+
+
+
+
+
+/* Desktop Styles ###########################################*/
+@media screen and (min-width: 1024px) {
+  .upgrades-grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
+
+  nav ul {
+      justify-content: center;
+  }
+
+  nav ul li {
+      margin: 0 15px;
+  }
 }
 
-.upgrade-item {
-  text-align: center;
-}
-
-.upgrade-item img {
-  width: 100px;
-  height: auto;
-}
-
+/* Mobile Styles #############################################*/
+/* Smaller image for mobile */
 /* Responsive Design */
 @media screen and (min-width: 768px) {
   .hero {
@@ -118,16 +121,93 @@ nav ul li {
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .upgrades-grid {
-      grid-template-columns: repeat(4, 1fr);
+@media screen and (max-width: 768px) {
+  .flame-decals {
+    width: 100px; /* Adjust as needed */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-image: url("/images/site/small_check.jpg"); /* Mobile-friendly background */
+    background-size: cover;
+    background-position: center;
+  }
+}
+/*######################################*/
+@media all and (min-width: 600px) {
+  .grid--2-cols {
+    grid-template-columns: 1fr 1fr;
   }
 
-  nav ul {
-      justify-content: center;
-  }
 
-  nav ul li {
-      margin: 0 15px;
+  .reviews-section {
+    order: 2;
   }
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid--1-cols {
+  grid-template-columns: 1fr;
+}
+
+
+
+.img-upgrade {
+  height: 6rem;
+}
+
+.reviews-section {
+  order: 1;
+  margin: 0 2rem;
+}
+
+.reviews-section ul li {
+  margin-bottom: 2rem;
+}
+
+.reviews-section ul {
+  padding-left: 20px;
+}
+
+.cards-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.cards-grid--2-cols {
+  grid-template-columns: 1fr 1fr;
+}
+.card {
+  text-align: center;
+}
+
+.upgrade-img {
+  background-color: #4c96d6;
+  padding: 1rem 0;
+}
+
+.info {
+  margin-bottom: 4.8rem;
+}
+
+.nig-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.nig-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
 }
