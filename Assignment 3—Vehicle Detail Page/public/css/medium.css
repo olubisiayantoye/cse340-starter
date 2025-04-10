@@ -1,0 +1,30 @@
+@media all and (min-width: 600px) {
+  #wrapper {
+    margin: 10px auto;
+    border: 3px solid #01b0d3;
+    border-radius: 10px;
+  }
+
+  .action {
+    left: 40px;
+    padding: 10px;
+  }
+
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 10px;
+    margin: 5px;
+  }
+
+  .upgrades {
+    grid-column-start: 1;
+  }
+
+  .reviews {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+}
