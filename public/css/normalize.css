@@ -350,3 +350,21 @@ template {
 [hidden] {
   display: none;
 }
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+}
+
