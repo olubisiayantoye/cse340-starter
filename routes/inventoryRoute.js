@@ -14,7 +14,7 @@ router.get("/detail/:vehicleId", utilities.Util.handleErrors(invController.invCo
 router.get("/getInventory/:classification_id", utilities.Util.handleErrors(invController.invCont.getInventoryJSON))
 router.get("/edit/:vehicleId", auth, utilities.Util.handleErrors(invController.invCont.editInventoryView))
 router.get("/delete/:vehicleId", auth, utilities.Util.handleErrors(invController.invCont.deleteInventoryView))
-
+router.get("/get-classifications", invController.invCont.getAllClassifications)
 
 router.get("/add-classification", auth, utilities.Util.handleErrors(invController.invCont.buildClassificationForm))
 // Process the new Classification data

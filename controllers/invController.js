@@ -112,26 +112,20 @@ async function addInventory(req, res) {
 }
 
 async function registerClassification(req, res) {
-  const {classification_name} = req.body
-  const regResult = await invModel.registerClassification(
-    classification_name
-  )
+  const { classification_name } = req.body
+
+  const regResult = await invModel.registerClassification(classification_name)
 
   if (regResult) {
-    let nav = await utilities.Util.getNav()
-    let categories = await utilities.Util.getCats()
+    console.log("DB Result:", regResult)
     req.flash(
       "notice",
-      `Congratulations! ${classification_name} has been added.`
+      `Congratulations! "${classification_name}" has been added.`
     )
-    res.status(201).render("inventory/edit-inventory", {
-      title: "Inventory Management",
-      nav,
-      errors: null,
-      categories
-    })
+    // Redirect to the classifications list view
+    return res.redirect("/inv/get-classifications")
   } else {
-    let nav = utilities.Util.getNav()
+    let nav = await utilities.Util.getNav()
     req.flash("notice", "Sorry, the action failed.")
     res.status(501).render("inventory/add-classification", {
       title: "Add New Classification",
@@ -140,6 +134,7 @@ async function registerClassification(req, res) {
     })
   }
 }
+
 
 /* ***************************
  *  Return Inventory by Classification As JSON
@@ -298,6 +293,25 @@ invCont.deleteVehicle = async function (req, res, next) {
     inv_year,
     inv_price,
     })
+  }
+}
+/* ***************************
+ *  Render All Classifications in a Table View
+ * ************************** */
+invCont.getAllClassifications = async function (req, res, next) {
+  try {
+    const data = await invModel.getClassifications()
+    const classifications = data.rows
+    const table = await utilities.Util.buildClassificationsTable(classifications)
+    let nav = await utilities.Util.getNav()
+    res.render("./inventory/classifications-list", {
+      title: "All Classifications",
+      nav,
+      table,
+      errors: null
+    })
+  } catch (error) {
+    next(error)
   }
 }
 

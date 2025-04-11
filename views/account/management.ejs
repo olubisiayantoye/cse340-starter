@@ -16,10 +16,12 @@
     <p>You are logged in</p>
 
 
-    <div class="container">
-      <button type="button"><a href="/account/update/">Account Settings</a></button>
-      <button type="button"><a href="/messages/">Messages</a></button>
+    <div >
+     <ul>
+      <li><button type="button"><a href="/account/update/">Account Settings</a></button></li>
+      <li><button type="button"><a href="/messages/">Messages</a></button></li>
       <% if (locals.accountData.account_type != "Client"){%>
-        <button type="button"><a href="/inv/">Manage Inventory</a></button>
+        <li> <button type="button"><a href="/inv/">Manage Inventory</a></button></li>
       <% } %>
+    </ul>
     </div>

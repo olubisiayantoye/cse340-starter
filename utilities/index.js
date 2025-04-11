@@ -149,6 +149,48 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+/* **************************************
+ * Builds a table of all classifications
+ * ************************************** */
+Util.buildClassificationsTable = async function (data) {
+  let table = `
+  <table>
+    <thead>
+      <tr>
+        <th>Classification Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+  `
+
+  data.forEach((classification) => {
+    table += `
+      <tr>
+        <td>${classification.classification_name}</td>
+        <td>
+          <a href="/inv/edit-classification/${classification.classification_id}" class="btn btn-edit">Edit</a>
+          <form action="/inv/delete-classification/${classification.classification_id}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this classification?')">Delete</button>
+          </form>
+        </td>
+      </tr>
+    `
+  })
+
+  table += `
+    </tbody>
+  </table>
+  `
+  return table
+}
+
+
+
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+
+
+
 
 module.exports = {Util}
